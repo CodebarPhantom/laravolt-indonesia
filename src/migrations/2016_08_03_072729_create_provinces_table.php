@@ -16,9 +16,7 @@ class CreateProvincesTable extends Migration
         Schema::create(config('laravolt.indonesia.table_prefix').'provinces', function (Blueprint $table) {
             $table->char('id', 2);
             $table->string('name', 255);
-            $table->text('meta')->nullable();
             $table->primary('id');
-            $table->timestamps();
         });
     }
 

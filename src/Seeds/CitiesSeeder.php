@@ -13,9 +13,9 @@ class CitiesSeeder extends Seeder
         $file = __DIR__.'/../../resources/csv/cities.csv';
         $header = ['id', 'province_id', 'name'];
         $data = $Csv->csv_to_array($file, $header);
-        $data = array_map(function ($arr) {
-            return $arr + ['created_at' => now()];
-        }, $data);
+        foreach ($data as $i => $city) {
+            $data[$i]['name'] = \Str::title($city['name']);
+        }
 
         $collection = collect($data);
         foreach ($collection->chunk(50) as $chunk) {

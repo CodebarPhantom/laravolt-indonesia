@@ -15,6 +15,9 @@ class VillagesSeeder extends Seeder
         foreach ($resourceFiles as $file) {
             $header = ['id', 'district_id', 'name'];
             $data = $csv->csv_to_array($file->getRealPath(), $header);
+            foreach ($data as $i => $village) {
+                $data[$i]['name'] = \Str::title($village['name']);
+            }
             $collection = collect($data);
             foreach ($collection->chunk(50) as $chunk) {
                 DB::table(config('laravolt.indonesia.table_prefix').'villages')->insert($chunk->toArray());

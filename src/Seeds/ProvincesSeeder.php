@@ -12,9 +12,11 @@ class ProvincesSeeder extends Seeder
         $file = __DIR__.'/../../resources/csv/provinces.csv';
         $header = ['id', 'name'];
         $data = $Csv->csv_to_array($file, $header);
-        $data = array_map(function ($arr) {
-            return $arr + ['created_at' => now()];
-        }, $data);
+        foreach ($data as $i => $province) {
+            $data[$i]['name'] = $province['name'] == 'DKI JAKARTA' ? 'DKI Jakarta'
+                                : ($province['name'] == 'DI YOGYAKARTA' ? 'D.I. Yogyakarta'
+                                : \Str::title($province['name']));
+        }
 
         \DB::table(config('laravolt.indonesia.table_prefix').'provinces')->insert($data);
     }
