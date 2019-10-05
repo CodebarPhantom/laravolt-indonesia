@@ -17,7 +17,6 @@ class CreateVillagesTable extends Migration
             $table->char('id', 10);
             $table->char('district_id', 7);
             $table->string('name', 255);
-            $table->char('postal_code', 6)->nullable();
             $table->primary('id');
 
             $table->foreign('district_id')
