@@ -1,5 +1,5 @@
 {
-    "name": "laravolt/indonesia",
+    "name": "girein/laravolt-indonesia",
     "description": "Package Laravel yang berisi data Provinsi, Kabupaten/Kota, Kecamatan, dan Keluarahan/Desa di seluruh Indonesia.",
     "keywords": ["laravel", "laravolt", "indonesia", "provinsi", "kabupaten", "kota", "kecamatan", "kelurahan", "desa"],
     "license": "MIT",
